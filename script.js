@@ -1,3 +1,5 @@
+// Pastikan kode ini berada di file script.js
+
 document.getElementById('transactionForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -13,10 +15,10 @@ document.getElementById('transactionForm').addEventListener('submit', function (
     document.getElementById('receiptTime').textContent = new Date().toLocaleString();
 
     // Tampilkan struk
-    document.getElementById('receipt').style.display = 'block';
+    document.getElementById('receipt').classList.remove('hidden');
 });
 
-/// Fungsi untuk membagikan struk ke WhatsApp sebagai gambar
+// Fungsi untuk membagikan struk ke WhatsApp sebagai gambar
 document.getElementById('shareWhatsApp').addEventListener('click', function () {
     const receiptElement = document.getElementById('receipt');
 
@@ -38,4 +40,3 @@ document.getElementById('shareWhatsApp').addEventListener('click', function () {
         window.location.href = whatsappUrl;
     });
 });
-
