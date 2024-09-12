@@ -29,9 +29,10 @@ document.getElementById('shareWhatsApp').addEventListener('click', function () {
     // Encode teks untuk URL
     const encodedText = encodeURIComponent(shareText);
 
-    // Buat URL WhatsApp
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedText}`;
+    // Buat URL WhatsApp untuk perangkat mobile
+    const whatsappUrl = `whatsapp://send?text=${encodedText}`;
 
-    // Buka WhatsApp dengan URL
-    window.open(whatsappUrl, '_blank');
+    // Buka WhatsApp langsung di aplikasi (akan bekerja di mobile jika ada WhatsApp)
+    window.location.href = whatsappUrl;
 });
+
