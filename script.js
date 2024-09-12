@@ -16,23 +16,26 @@ document.getElementById('transactionForm').addEventListener('submit', function (
     document.getElementById('receipt').style.display = 'block';
 });
 
-// Fungsi untuk membagikan struk ke WhatsApp
+/// Fungsi untuk membagikan struk ke WhatsApp sebagai gambar
 document.getElementById('shareWhatsApp').addEventListener('click', function () {
-    const customerName = document.getElementById('customerName').value;
-    const transactionAmount = document.getElementById('transactionAmount').value;
-    const paymentMethod = document.getElementById('paymentMethod').value;
-    const receiptTime = new Date().toLocaleString();
+    const receiptElement = document.getElementById('receipt');
 
-    // Format teks yang akan dibagikan
-    const shareText = `Struk Transaksi:\nNama Pelanggan: ${customerName}\nNominal Transaksi: Rp${transactionAmount}\nMetode Pembayaran: ${paymentMethod}\nWaktu Transaksi: ${receiptTime}`;
+    // Mengambil elemen struk dan mengubahnya menjadi gambar
+    html2canvas(receiptElement).then(function (canvas) {
+        // Konversi canvas ke Data URL (base64)
+        const imageDataUrl = canvas.toDataURL('image/png');
 
-    // Encode teks untuk URL
-    const encodedText = encodeURIComponent(shareText);
+        // Buat link untuk membuka WhatsApp dengan teks yang telah diencode
+        const whatsappUrl = `whatsapp://send?text=Struk%20transaksi%20terlampir%20sebagai%20gambar.`;
 
-    // Buat URL WhatsApp untuk perangkat mobile
-    const whatsappUrl = `whatsapp://send?text=${encodedText}`;
+        // Download gambar ke perangkat (opsional)
+        const link = document.createElement('a');
+        link.href = imageDataUrl;
+        link.download = 'struk-transaksi.png';
+        link.click();
 
-    // Buka WhatsApp langsung di aplikasi (akan bekerja di mobile jika ada WhatsApp)
-    window.location.href = whatsappUrl;
+        // Buka WhatsApp dan minta pengguna melampirkan gambar yang didownload
+        window.location.href = whatsappUrl;
+    });
 });
 
