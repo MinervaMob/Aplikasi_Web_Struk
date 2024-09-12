@@ -1,0 +1,116 @@
+/* Gunakan font Google */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4CAF50;
+    font-size: 1.8em;
+}
+
+h1 i, h2 i {
+    margin-right: 10px;
+}
+
+/* Form styling */
+form label {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Styling struk */
+#receipt {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+#receipt p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+#receipt button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+#receipt button:hover {
+    background-color: #005f73;
+}
+
+/* Print-specific styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #receipt, #receipt * {
+        visibility: visible;
+    }
+
+    #receipt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    #receipt button {
+        display: none;
+    }
+}
